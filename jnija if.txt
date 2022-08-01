@@ -1,0 +1,39 @@
+    {% if cond == 'Cloudy'%}
+        <img src="static/img/cloudyHighRes.webp" class="img-fluid" alt="">
+    {% endif %}
+
+    {% if cond == 'Clear'%}
+        <img src="static/img/sunnyHighRes.webp" class="img-fluid" alt="">
+
+    {% endif %}
+
+    {% if cond == 'Partly cloudy'%}
+        <img src="static/img/partlyCloudyLandscape.webp" class="img-fluid" alt="">
+
+    {% endif %}
+
+    {% if cond == 'Overcast' %}
+        <img src="static/img/overcastHighRes" class="img-fluid" alt="">
+    
+    {% endif %}
+
+    {% if cond == 'Sunny'%}
+        <div class="masthead"
+         style="background-image: url('static/img/sunnyHighRes.webp');">
+        </div>
+
+        
+        
+    
+    {% endif %}
+
+
+    {% if cond == 'Rain Shower'%}
+        <img src="" id="bg" alt="">
+    
+    {% endif %}
+
+    {% if cond == 'Heavy Rain'%}
+        <img src="https://images.pond5.com/background-heavy-rain-day-city-footage-078516556_prevstill.jpeg" id="bg" alt="">
+
+    {% endif %}
