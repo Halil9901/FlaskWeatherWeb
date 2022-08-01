@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+.masthead{
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    
+}
+.rounded{
+    background-color: #e0e0e0;
+    width: 85%;
+    margin: 50px;
+    
+    
+    
+    
+}
+
+.Panel h3{
+    font-size: small;
+    padding-left: 7%;
+    color: white;
+}
+
+.cityContainer h4{
+    color: #e0e0e0;
+
+}
+
+.cityContainer{
+    padding-top: 20%;
+}
+
+.Panel p{
+    color: #e0e0e0;
+}
+.align-middle h1{
+    display: inline;
+    font-weight: 400;
+    font-size: 150px;
+    color: white;
+}
+.align-middle h2{
+    display: inline;
+    font-weight: 300;
+    font-size: 50px;
+    color: white;
+}
+
+.align-middle h3{
+    font-weight: 100;
+    color: white;
+}
+button[type=submit]{
+    background-color: #04AA6D;
+    float: right;
+    padding: 35px;
+    border-radius: 5px;
+    border-style: none;
+    
+    
+}
+
+
+body {
+	background: #DDD;
+	font-size: 15px;
+}
+.wrap {
+  margin: 50px 100px;
+  display: inline-block;
+  position: relative;
+  height: 60px;
+  float: right;
+  padding: 0;
+  position: relative;
+  padding-top: 2%;
+  
+  
+}
+
+input[type="text"] {
+    margin-top: 20%;
+    width: 50%;
+  
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #e0e0e0;
+    background: transparent;
+    
+}
+
+
+
+
+input[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+</style>
+<script src="{{url_for('static', filename='autocomplete.js')}}"></script>
+<script src="{{url_for('static', filename='ajax.js')}}"></script>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<div class="container-xxl">
+    
+    <div class="masthead"
+         style="background-image: url('static/img/{{cond}}.jpeg');">
+
+
+    
+
+    
+    <div class="float-right" style=" width: 40%; height: 100vh; overflow-x: hidden; overflow-y: auto; background-color: rgba(0,0,0,.5);backdrop-filter: blur(5px);">
+
+        <div class="Panel" style="height:100%; ">
+            <div class="d-flex justify-content-end" style=" width: 100%;">
+                
+                    <form action="/home" method="POST" autocomplete="on">
+                        <input type="text" name="search" id="search" placeholder="Search City">
+                        
+                        <button type="submit" id="search_submit">
+                            <img src="static/img/search_icon.png" alt="">
+                        </button>
+                    </form>
+                    <div id="match-list"></div>
+                
+            </div>
+
+            <div class="cityContainer" style="padding-left: 7%; ">
+                <div class="column">
+                    <p>London</p>
+                    <br>
+                    
+                    <p>Miami</p>
+                    <br>
+                    
+                    <p>Las Vagas</p>
+                    <br>
+                    
+                    <p>Tokoyo</p>
+                </div>
+            </div>
+
+            <hr class="rounded">
+            <h3>Weather Details</h3> <br> <Br>
+            <div class="row" style="padding-left: 7%;">
+            <div class="col-8"><p>Condition</p></div>
+            <div class="col-4"><p>{{cond}}</p></div>
+                <br>
+                <br>
+            <div class="col-8"><p>Wind Speed</p></div>
+            <div class="col-4"><p>{{windSpeed}} MPH</p></div>
+                <br>
+                <br>
+            <div class="col-8"><p>Humidity</p></div>
+            <div class="col-4"><p>{{humidity}}%</p></div>
+                <br>
+                <br>
+            <div class="col-8"><p>Cloud Cover</p></div>
+            <div class="col-4"><p>{{cloudCover}}%</p></div>
+                <br>
+                <br>
+            <div class="col-8"><p>UV</p></div>
+            <div class="col-4"><p>{{uv}}</p></div>
+                <br>
+                <br>
+            <div class="col-8"><p>UV</p></div>
+            <div class="col-4"><p>{{uv}}</p></div>
+                <br>
+                <br>
+            <div class="col-8"><p>UV</p></div>
+            <div class="col-4"><p>{{uv}}</p></div>
+                <br>
+                <br>
+            <div class="col-8"><p>UV</p></div>
+            <div class="col-4"><p>{{uv}}</p></div>
+        
+        
+
+
+            </div>
+        </div>
+        
+    </div>
+
+    <p style="color:grey; padding-left: 1%; padding-top: 1%;">Updated {{timeAgo}}</p>
+   
+    
+    <div class="fixed-bottom" style=" width: 60%; padding-left: 3.5%;" >
+     <div class="d-flex flex-row mb-3" style="width:100%;">
+    <div class="align-middle" style=" display: flex;">
+        
+            <h1>{{temp}}°</h1>
+            <div class="main-text" style=" padding-top: 8% ;">
+                <h2>{{city}},  {{country}}</h2>
+                <h3>{{cityTime}} - {{cityDate}}</h3>
+            </div>  
+        </div>            
+        
+
+    </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
