@@ -3,6 +3,12 @@
 <meta charset="UTF-8">
 <title>Page Title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style>
     html,body
@@ -161,40 +167,42 @@ input[type="submit"]:hover {
                 </div>
             </div>
 
-            <hr class="rounded">
-            <h3>Weather Details</h3> <br> <Br>
-            <div class="row" style="padding-left: 7%;">
-            <div class="col-8"><p>Condition</p></div>
-            <div class="col-4"><p>{{cond}}</p></div>
-                <br>
-                <br>
-            <div class="col-8"><p>Wind Speed</p></div>
-            <div class="col-4"><p>{{windSpeed}} MPH</p></div>
-                <br>
-                <br>
-            <div class="col-8"><p>Humidity</p></div>
-            <div class="col-4"><p>{{humidity}}%</p></div>
-                <br>
-                <br>
-            <div class="col-8"><p>Cloud Cover</p></div>
-            <div class="col-4"><p>{{cloudCover}}%</p></div>
-                <br>
-                <br>
-            <div class="col-8"><p>UV</p></div>
-            <div class="col-4"><p>{{uv}}</p></div>
-                <br>
-                <br>
-            <div class="col-8"><p>UV</p></div>
-            <div class="col-4"><p>{{uv}}</p></div>
-                <br>
-                <br>
-            <div class="col-8"><p>UV</p></div>
-            <div class="col-4"><p>{{uv}}</p></div>
-                <br>
-                <br>
-            <div class="col-8"><p>UV</p></div>
-            <div class="col-4"><p>{{uv}}</p></div>
-        
+            <div id="update">
+
+                <hr class="rounded">
+                <h3>Weather Details</h3> <br> <Br>
+                <div class="row" style="padding-left: 7%;">
+                <div class="col-8"><p>Condition</p></div>
+                <div class="col-4"><p>{{cond}}</p></div>
+                    <br>
+                    <br>
+                <div class="col-8"><p>Wind Speed</p></div>
+                <div class="col-4"><p>{{windSpeed}} MPH</p></div>
+                    <br>
+                    <br>
+                <div class="col-8"><p>Humidity</p></div>
+                <div class="col-4"><p>{{humidity}}%</p></div>
+                    <br>
+                    <br>
+                <div class="col-8"><p>Cloud Cover</p></div>
+                <div class="col-4"><p>{{cloudCover}}%</p></div>
+                    <br>
+                    <br>
+                <div class="col-8"><p>UV</p></div>
+                <div class="col-4"><p>{{uv}}</p></div>
+                    <br>
+                    <br>
+                <div class="col-8"><p>UV</p></div>
+                <div class="col-4"><p>{{uv}}</p></div>
+                    <br>
+                    <br>
+                <div class="col-8"><p>UV</p></div>
+                <div class="col-4"><p>{{uv}}</p></div>
+                    <br>
+                    <br>
+                <div class="col-8"><p>UV</p></div>
+                <div class="col-4"><p>{{uv}}</p></div>
+            </div>
         
 
 
@@ -204,11 +212,12 @@ input[type="submit"]:hover {
     </div>
 
     <p style="color:grey; padding-left: 1%; padding-top: 1%;">Updated {{timeAgo}}</p>
+    <p>{{city1}}</p>
    
     
     <div class="fixed-bottom" style=" width: 60%; padding-left: 3.5%;" >
      <div class="d-flex flex-row mb-3" style="width:100%;">
-    <div class="align-middle" style=" display: flex;">
+    <div class="align-middle" id="Update" style=" display: flex;">
         
             <h1>{{temp}}°</h1>
             <div class="main-text" style=" padding-top: 8% ;">
@@ -221,7 +230,9 @@ input[type="submit"]:hover {
     </div>
     </div>
 </div>
+<script>
 
+</script>
 
 
 </body>
