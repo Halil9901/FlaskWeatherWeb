@@ -1,6 +1,6 @@
 from crypt import methods
 from urllib import response
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, make_response
 from flask_cors import CORS
 import timeago
 
@@ -39,20 +39,9 @@ def apiUpdate():
     return jsonify(api)
 
 
-@app.route('/test1', methods = ['GET', 'POST'])
-def api2():
-    r = requests.get('https://api.weatherapi.com/v1/current.json?key=4116a68b717644c3917221856222607&q=dubai')
-
-    data = json.loads(r.content)
-    dataCurrent = data['current']
-    dataLocation = data['location']
-    tempRnd = int(dataCurrent)
-
-    return jsonify(dataCurrent)
-
 
 def apiData():
-    city = session['city']
+    city = request.cookies.get('city')
 
     key = '4116a68b717644c3917221856222607'
     apiCallCurrent = 'current.json'
@@ -89,13 +78,16 @@ def apiData():
 
     uv = int(uv)
 
+    dateForUpdateTime = datetime.strptime(updateTime, format)
+    lastUpdateTime = dateForUpdateTime.strftime('%I:%M %p')
+
     timeAgo = (timeago.format(updatetimeFormat, now)) 
 
     
 
    
 
-    return (temp, cond, windSpeed, humidity, cloudCover, country, cityTime, updateTime, uv)
+    return (tempRound, cond, windSpeed, humidity, cloudCover, country, cityTime, lastUpdateTime, uv, city, cityDate)
 
 
 
@@ -104,20 +96,6 @@ def apiData():
 
     
     
-
-@app.route('/apitest')
-def apiTest():
-    city1 = session['city']
-
-    
-    
-    
-   
-    
-
-    
-    
-    return jsonify(city1)
 
 
 @app.route('/')
@@ -193,73 +171,36 @@ def home():
     cityTime = date.strftime('%I:%M %p')
     cityDate = date.strftime('%A, %d %b %Y')
 
+    dateForUpdateTime = datetime.strptime(updateTime, format)
+    lastUpdateTime = dateForUpdateTime.strftime('%I:%M %p')
+
     uv = int(uv)
 
     timeAgo = (timeago.format(updatetimeFormat, now)) 
     
-    # Change back to conditionstr
-    FakeCond = 'Sunny'
 
-    
-    
-    
-    
-    
-    
-    
-
-
-    return render_template('index.html',country=country,humidity=humidity ,cloudCover=cloudCover, 
+    resp = make_response(render_template('index.html',country=country,humidity=humidity ,cloudCover=cloudCover, 
       windSpeed=windSpeed,
-      city=city, temp=tempRound, cond=FakeCond,
+      city=city, temp=tempRound, cond=cond,
       day=day, date=date, localtime=localtime, uv=uv, 
-      cityTime=cityTime, cityDate=cityDate, timeAgo=timeAgo, city1=city1)
+      cityTime=cityTime, cityDate=cityDate, lastUpdateTime=lastUpdateTime))
 
-
-@app.route('/test', methods=['GET'])
-def index():
-    city = 'Oxford'
-    key = '4116a68b717644c3917221856222607'
-    apiCallCurrent = 'current.json'
-
-    url2 = 'https://api.weatherapi.com/v1/'+apiCallCurrent+'?key='+key+'&q='+city
-
-    req = requests.get(url2)
-    load = json.loads(req.text)
-    temp = load['current']['temp_c']
-    cond = load['current']['condition']['text']
-
-    return jsonify(cond)
-
-@app.route('/date', methods=['GET'])
-def date():
-
-    city = 'Oxford'
-    key = '4116a68b717644c3917221856222607'
-    apiCallCurrent = 'current.json'
-
-    url2 = 'https://api.weatherapi.com/v1/'+apiCallCurrent+'?key='+key+'&q='+city
-
-    req = requests.get(url2)
-    load = json.loads(req.text)
-    temp = load['current']['temp_c']
-    cond = load['current']['condition']['text']
-    cityTime = load['location']['localtime']
-    updateTime = load['current']['last_updated']
-
-
+    resp.set_cookie('city', city)
+    
+    
+    
+    
+    
     
 
-    format = '%Y-%m-%d %H:%M' #specifify the format of the date_string.
 
-    date = datetime.strptime(updateTime, format)
-    currentTime = date.strftime('%I:%M %p')
-    updateMinute = date.strftime('%M')
-    updateMinuteInt = int(updateMinute)
-    cityDate = date.strftime('%A, %d %b %Y')
-    now = datetime.now()
-    yesterday = now - timedelta(minutes=30)
-    timeAgo = (timeago.format(date, now)) 
+    return resp
 
-    return jsonify(timeAgo)
+@app.route('/autocomplete_api')
+def autocomplete():
+
+
+
+
+    return 
 
