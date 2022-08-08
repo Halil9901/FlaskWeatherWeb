@@ -3,6 +3,7 @@ from urllib import response
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, make_response
 from flask_cors import CORS
 import timeago
+import os
 
 
 
@@ -196,11 +197,6 @@ def home():
 
     return resp
 
-@app.route('/autocomplete_api')
-def autocomplete():
-
-
-
-
-    return 
-
+if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
