@@ -11,222 +11,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style>
-    html,body
-{
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden; 
-}
 
-.masthead{
-    background-size: cover;
-    min-height: 100vh;
-    width: 100%;
-    
-}
-.rounded{
-    background-color: #e0e0e0;
-    width: 85%;
-    margin: 50px;
-    
-    
-    
-    
-}
-
-.Panel h3{
-    font-size: small;
-    padding-left: 7%;
-    color: white;
-}
-
-.cityContainer h4{
-    color: #e0e0e0;
-
-}
-
-.cityContainer{
-    padding-top: 20%;
-}
-
-.Panel p{
-    color: #e0e0e0;
-}
-.align-middle h1{
-    display: inline;
-    font-weight: 400;
-    font-size: 150px;
-    color: white;
-}
-.align-middle h2{
-    display: inline;
-    font-weight: 300;
-    font-size: 50px;
-    color: white;
-}
-
-.align-middle h3{
-    font-weight: 100;
-    color: white;
-}
-button[type=submit]{
-    background-color: #04AA6D;
-    float: right;
-    padding: 35px;
-    border-radius: 5px;
-    border-style: none;
-    
-    
-}
-
-
-body {
-	background: #DDD;
-	font-size: 15px;
-}
-.wrap {
-  margin: 50px 100px;
-  display: inline-block;
-  position: relative;
-  height: 60px;
-  float: right;
-  padding: 0;
-  position: relative;
-  padding-top: 2%;
-  
-  
-}
-
-input[type="text"] {
-    margin-top: 20%;
-    width: 50%;
-  
-    box-sizing: border-box;
-    border: none;
-    border-bottom: 2px solid #e0e0e0;
-    background: transparent;
-    
-}
-
-
-
-
-input[type="submit"]:hover {
-  opacity: 0.8;
-}
-
-
-
-/* styling lable */
-.toggle {
-    --width: 80px;
-    --height: calc(var(--width) / 3);
-
-    position: relative;
-    display: inline-block;
-    width: var(--width);
-    height: var(--height);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-    border-radius: var(--height);
-    cursor: pointer;
-}
-
-/* hiding checkbox */
-.toggle input {
-    display: none;
-}
-
-
-/* Creating slider */
-.toggle .slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: var(--height);
-    background-color: #ccc;
-    transition: all 0.4s ease-in-out;
-}
-.toggle .slider::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: calc(var(--height));
-    height: calc(var(--height));
-    border-radius: calc(var(--height) / 2);
-    background-color: #fff;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s ease-in-out;
-}
-
-/* Adding slider effect */
-.toggle input:checked + .slider {
-    background-color: #2196F3;
-}
-.toggle input:checked + .slider::before {
-    transform: translateX(calc(var(--width) - var(--height)));
-}
-
-
-
-
-/* Adding text in the toggle button */
-.toggle .labels {
-    position: absolute;
-    top: 8px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 12px;
-    font-family: sans-serif;
-    transition: all 0.4s ease-in-out;
-}
-
-.toggle .labels::after {
-    content: attr(data-off);
-    position: absolute;
-    right: 5px;
-    color: #4d4d4d;
-    opacity: 1;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    transition: all 0.4s ease-in-out;
-}
-
-.toggle .labels::before {
-    content: attr(data-on);
-    position: absolute;
-    left: 5px;
-    color: #ffffff;
-    opacity: 0;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
-    transition: all 0.4s ease-in-out;
-}
-
-.toggle input:checked~.labels::after {
-    opacity: 0;
-}
-
-.toggle input:checked~.labels::before {
-    opacity: 1;
-}
 </style>
 <script src="{{url_for('static', filename='autocomplete.js')}}"></script>
 <script src="{{url_for('static', filename='ajax.js')}}"></script>
+
+
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 
 <body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBO05nQrFvv1LilM_hscB0NokEPeiG8e0&libraries=places&callback=initMap">
+    </script>
+    <script>
+        function activatePlaceSearch(){
+            var input = document.getElementById('search');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+        }
 
+        google.maps.event.addDomListener(window, 'load', activatePlaceSearch);
+    </script>
 
 <div class="container-xxl">
     
     <div class="masthead"
-         style="background-image: url('static/img/{{cond}}.jpeg');">
+         style="background-image: url('static/img/{{data.cond}}.jpeg');">
 
 
     
@@ -237,8 +51,8 @@ input[type="submit"]:hover {
         <div class="Panel" style="height:100%; ">
             <div class="d-flex justify-content-end" style=" width: 100%;">
                 
-                    <form action="/home" method="POST" autocomplete="on">
-                        <input type="text" name="search" id="search" placeholder="Search City">
+                    <form action="/home" method="POST" autocomplete="off">
+                        <input type="text" name="search" id="search" placeholder="Search City...">
                         
                         <button type="submit" id="search_submit">
                             <img src="static/img/search_icon.png" alt="">
@@ -250,7 +64,7 @@ input[type="submit"]:hover {
 
             <div class="cityContainer" style="padding-left: 7%; ">
                 <div class="column">
-                    <p>London</p>
+                    <p onclick="{{city == 'London'}}" >London</p>
                     <br>
                     
                     <p>Miami</p>
@@ -269,35 +83,35 @@ input[type="submit"]:hover {
                 <h3>Weather Details</h3> <br> <Br>
                 <div class="row" style="padding-left: 7%;">
                 <div class="col-8"><p>Condition</p></div>
-                <div class="col-4"><p><span id="Condition">{{cond}}</span></p></div>
+                <div class="col-4"><p><span id="Condition">{{data.cond}}</span></p></div>
                     <br>
                     <br>
                 <div class="col-8"><p>Wind Speed</p></div>
-                <div class="col-4"><p><span id="windSpeed">{{windSpeed}}</span> MPH</p></div>
+                <div class="col-4"><p><span id="windSpeed">{{data.windSpeed}}</span> MPH</p></div>
                     <br>
                     <br>
                 <div class="col-8"><p>Humidity</p></div>
-                <div class="col-4"><p><span id="humidity">{{humidity}}</span>%</p></div>
+                <div class="col-4"><p><span id="humidity">{{data.humidity}}</span>%</p></div>
                     <br>
                     <br>
                 <div class="col-8"><p>Cloud Cover</p></div>
-                <div class="col-4"><p><span id="cloudCover">{{cloudCover}}</span>%</p></div>
+                <div class="col-4"><p><span id="cloudCover">{{data.cloudCover}}</span>%</p></div>
                     <br>
                     <br>
                 <div class="col-8"><p>UV</p></div>
-                <div class="col-4"><p><span id="uv">{{uv}}</span></p></div>
+                <div class="col-4"><p><span id="uv">{{data.uv}}</span></p></div>
                     <br>
                     <br>
                 <div class="col-8"><p>UV</p></div>
-                <div class="col-4"><p><span id="uv">{{uv}}</p></div>
+                <div class="col-4"><p><span id="uv">{{data.uv}}</p></div>
                     <br>
                     <br>
                 <div class="col-8"><p>UV</p></div>
-                <div class="col-4"><p>{{uv}}</p></div>
+                <div class="col-4"><p>{{data.uv}}</p></div>
                     <br>
                     <br>
                 <div class="col-8"><p>UV</p></div>
-                <div class="col-4"><p>{{uv}}</p></div>
+                <div class="col-4"><p>{{data.uv}}</p></div>
             </div>
         
 
@@ -307,11 +121,11 @@ input[type="submit"]:hover {
         
     </div>
 
-    <p style="color:grey; padding-left: 1%; padding-top: 1%;">Updated <span id="lastUpdateTime">{{lastUpdateTime}}</span></p>
+    <p style="color:grey; padding-left: 1%; padding-top: 1%;">Updated <span id="lastUpdateTime">{{data.updateTime}}</span></p>
     <label class="toggle">
         <input type="checkbox">
         <span class="slider"></span>
-        <span class="labels" data-on="ON" data-off="OFF"></span>
+        <span class="labels" data-on="F" data-off="C"></span>
       </label>
    
     
@@ -319,10 +133,10 @@ input[type="submit"]:hover {
      <div class="d-flex flex-row mb-3" style="width:100%;">
     <div class="align-middle" id="update" style=" display: flex;">
         
-            <h1><span id="temp">{{temp}}</span>°</h1>
+            <h1><span id="temp">{{data.temp}}</span>°</h1>
             <div class="main-text" style=" padding-top: 8% ;">
-                <h2><span id="">{{city}}</span>,  <span id="">{{country}}</span></h2>
-                <h3><span id="time">{{cityTime}}</span> - <span id="date">{{cityDate}}</span></h3>
+                <h2><span id="">{{data.city}}</span>,  <span id="">{{data.country}}</span></h2>
+                <h3><span id="time">{{data.cityTime}}</span> - <span id="date">{{data.cityDate}}</span></h3>
             </div>  
         </div>            
         

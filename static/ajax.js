@@ -14,7 +14,7 @@ function startSetInterval() {
 
 //Calls the update_data_frame function every 10,000 milliseconds = 10 sec
 //60,000 = 1min
-var myVar = setInterval(update_data_frame, 60000);
+var myVar = setInterval(update_data_frame, 120000);
 
 
 //This function makes a POST request to the flask route "/update"
