@@ -191,18 +191,7 @@ def apiDump(city):
 
     return data
     
-   
 
-
-
-
-@app.route('/dump')
-def dump():
-
-    apidump = apiDump()
-
-
-    return  apidump
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
