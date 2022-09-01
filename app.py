@@ -111,13 +111,13 @@ def hello_world():
 def home():
 
     
-    #IP fetch API
-    #url = 'https://ipapi.co/json/'
+    #Free IP fetch API
+    url = 'https://ipapi.co/json/'
     
-    #r = requests.get(url)
-    #j = json.loads(r.text)
-    # city = j['city']
-    city = 'London'
+    r = requests.get(url)
+    j = json.loads(r.text)
+    city = j['city']
+    
 
 
     apiTester = apiDump(city=city)
@@ -175,7 +175,7 @@ def apiDump(city):
     data = {
 
         "temp": round(load['current']['temp_c']),
-        "cond": 'Partly Cloudy',
+        "cond": load['current']['condition']['text'],
         "humidity": load['current']['humidity'],
         "cloudCover": load['current']['cloud'],
         "windSpeed": round(load['current']['wind_mph']),
